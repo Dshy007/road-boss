@@ -1,0 +1,182 @@
+.container {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-metallic);
+  border: 2px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+}
+
+.avatarText {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-chrome-silver);
+}
+
+.name {
+  font-size: var(--text-2xl);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.gradeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.pointsLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-deep-gold);
+  font-weight: 700;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sectionTitle {
+  font-size: var(--text-lg);
+  color: var(--color-chrome-silver);
+  margin-bottom: var(--space-xs);
+}
+
+.recordsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-sm) 0;
+}
+
+.recordValue {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.recordLabel {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+}
+
+.contactLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.contactValue {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.contactDivider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.historyRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.historyMonth {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  flex: 1;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.historyPoints {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.historyRank {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  min-width: 30px;
+  text-align: right;
+}
+
+.logoutButton {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-top: var(--space-md);
+}
+
+.logoutButton:hover {
+  border-color: var(--color-dark-maroon);
+  color: var(--color-dark-maroon);
+}

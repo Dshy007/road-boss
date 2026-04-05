@@ -1,0 +1,22 @@
+{
+  "name": "Road Boss",
+  "short_name": "Road Boss",
+  "description": "Safety Pays - Driver rewards platform",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#0D0D0D",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

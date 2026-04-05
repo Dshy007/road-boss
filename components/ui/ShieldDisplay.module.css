@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.shields {
+  display: flex;
+  gap: 4px;
+}
+
+.shield {
+  transition: all var(--transition-base);
+}
+
+.active {
+  filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.4));
+}
+
+.inactive {
+  opacity: 0.3;
+}
