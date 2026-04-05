@@ -23,40 +23,43 @@ const daysLeft = 12;
 export default function LeaderboardPage() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      <div className={`${styles.header} stagger-1`}>
         <h2 className={styles.title}>Leaderboard</h2>
         <div className={styles.resetTimer}>
           <span className={styles.resetLabel}>Monthly Reset in</span>
-          <span className={styles.resetDays}>{daysLeft} days</span>
+          <span className={`${styles.resetDays} glow-gold`}>{daysLeft} days</span>
         </div>
       </div>
 
       <div className={styles.list}>
-        {drivers.map((driver) => {
+        {drivers.map((driver, i) => {
           const isTop3 = driver.rank <= 3;
           const isCurrentUser = driver.name === currentDriver;
 
           return (
-            <MetalCard
-              key={driver.rank}
-              variant={isTop3 ? "elevated" : "default"}
-              className={isCurrentUser ? styles.currentUser : ""}
-            >
-              <div className={styles.row}>
-                <div className={`${styles.rankBadge} ${isTop3 ? styles[`rank${driver.rank}`] : ""}`}>
-                  {driver.rank}
+            <div key={driver.rank} className={`stagger-${Math.min(i + 2, 8)}`}>
+              <MetalCard
+                variant={isTop3 ? "elevated" : "default"}
+                className={`${isCurrentUser ? styles.currentUser : ""} shimmer-card`}
+              >
+                <div className={styles.row}>
+                  <div className={`${styles.rankBadge} ${isTop3 ? styles[`rank${driver.rank}`] : ""}`}>
+                    {driver.rank}
+                  </div>
+                  <div className={styles.driverInfo}>
+                    <span className={styles.driverName}>
+                      {isCurrentUser ? "You" : driver.name}
+                    </span>
+                    <span className={styles.driverPoints}>
+                      {driver.points.toLocaleString()} pts
+                    </span>
+                  </div>
+                  <div className="scale-in">
+                    <GradeBadge grade={driver.grade} size="sm" />
+                  </div>
                 </div>
-                <div className={styles.driverInfo}>
-                  <span className={styles.driverName}>
-                    {isCurrentUser ? "You" : driver.name}
-                  </span>
-                  <span className={styles.driverPoints}>
-                    {driver.points.toLocaleString()} pts
-                  </span>
-                </div>
-                <GradeBadge grade={driver.grade} size="sm" />
-              </div>
-            </MetalCard>
+              </MetalCard>
+            </div>
           );
         })}
       </div>

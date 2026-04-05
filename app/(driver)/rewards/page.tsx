@@ -34,14 +34,16 @@ export default function RewardsPage() {
   return (
     <div className={styles.container}>
       {/* Points Header */}
-      <div className={styles.pointsHeader}>
+      <div className={`${styles.pointsHeader} stagger-1`}>
         <div className={styles.pointsRow}>
           <div className={styles.pointsMain}>
             <span className={styles.pointsLabel}>Your Points</span>
-            <span className={styles.pointsValue}>{driver.points.toLocaleString()}</span>
+            <span className={`${styles.pointsValue} glow-gold`}>{driver.points.toLocaleString()}</span>
           </div>
           <div className={styles.pointsMeta}>
-            <GradeBadge grade={driver.grade} size="md" />
+            <div className="scale-in">
+              <GradeBadge grade={driver.grade} size="md" />
+            </div>
             <ShieldDisplay count={driver.shields} />
           </div>
         </div>
@@ -59,48 +61,51 @@ export default function RewardsPage() {
       </div>
 
       {/* Gift Card Store */}
-      <div className={styles.section}>
+      <div className={`${styles.section} stagger-2`}>
         <h3 className={styles.sectionTitle}>Reward Store</h3>
         <div className={styles.cardGrid}>
-          {giftCards.map((card) => {
+          {giftCards.map((card, i) => {
             const canAfford = driver.points >= card.points;
             return (
-              <MetalCard
-                key={card.id}
-                variant={canAfford ? "elevated" : "default"}
-                className={!canAfford ? styles.locked : ""}
-              >
-                <div className={styles.giftCard}>
-                  <span className={styles.giftAmount}>${card.amount}</span>
-                  <span className={styles.giftBrand}>{card.label}</span>
-                  <span className={styles.giftPoints}>{card.points.toLocaleString()} pts</span>
-                </div>
-              </MetalCard>
+              <div key={card.id} className={`stagger-${i + 3}`}>
+                <MetalCard
+                  variant={canAfford ? "elevated" : "default"}
+                  className={`${!canAfford ? styles.locked : ""} shimmer-card`}
+                >
+                  <div className={styles.giftCard}>
+                    <span className={styles.giftAmount}>${card.amount}</span>
+                    <span className={styles.giftBrand}>{card.label}</span>
+                    <span className={styles.giftPoints}>{card.points.toLocaleString()} pts</span>
+                  </div>
+                </MetalCard>
+              </div>
             );
           })}
         </div>
       </div>
 
       {/* Admin Prizes */}
-      <div className={styles.section}>
+      <div className={`${styles.section} stagger-6`}>
         <h3 className={styles.sectionTitle}>Admin Prizes</h3>
-        {adminPrizes.map((prize) => (
-          <MetalCard key={prize.id}>
-            <div className={styles.prizeRow}>
-              <span className={styles.prizeIcon}>
-                {prize.icon === "trophy" && "\u{1F3C6}"}
-                {prize.icon === "ticket" && "\u{1F3AB}"}
-                {prize.icon === "cash" && "\u{1F4B0}"}
-              </span>
-              <span className={styles.prizeTitle}>{prize.title}</span>
-              <span className={styles.prizeReq}>{prize.requirement}</span>
-            </div>
-          </MetalCard>
+        {adminPrizes.map((prize, i) => (
+          <div key={prize.id} className={`stagger-${Math.min(i + 7, 8)}`}>
+            <MetalCard className="shimmer-card">
+              <div className={styles.prizeRow}>
+                <span className={styles.prizeIcon}>
+                  {prize.icon === "trophy" && "\u{1F3C6}"}
+                  {prize.icon === "ticket" && "\u{1F3AB}"}
+                  {prize.icon === "cash" && "\u{1F4B0}"}
+                </span>
+                <span className={styles.prizeTitle}>{prize.title}</span>
+                <span className={styles.prizeReq}>{prize.requirement}</span>
+              </div>
+            </MetalCard>
+          </div>
         ))}
       </div>
 
       {/* Redemption History */}
-      <div className={styles.section}>
+      <div className={`${styles.section} stagger-8`}>
         <h3 className={styles.sectionTitle}>Redemption History</h3>
         {history.map((item) => (
           <MetalCard key={item.id}>

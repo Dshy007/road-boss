@@ -62,6 +62,7 @@ export default function DriverLayout({ children }: { children: React.ReactNode }
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.fireBackground} />
       <main className={styles.main}>{children}</main>
 
       <nav className={styles.tabBar}>
