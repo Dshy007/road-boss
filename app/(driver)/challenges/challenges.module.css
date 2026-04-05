@@ -5,19 +5,27 @@
   gap: var(--space-lg);
   max-width: 480px;
   margin: 0 auto;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
 }
 
-.header { padding-top: var(--space-md); }
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
 .title {
   font-size: var(--text-2xl);
   color: var(--color-text-primary);
+  text-align: center;
 }
 
 .subtitle {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  margin-top: var(--space-xs);
+  text-align: center;
 }
 
 .section {
@@ -60,18 +68,24 @@
   font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  border-radius: var(--radius-sm);
 }
 
 .challengeDesc {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .challengeFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-xs);
 }
 
 .reward {
@@ -114,10 +128,11 @@
 
 .videoBar {
   width: 100%;
-  height: 6px;
+  height: 8px;
   background: var(--color-bg-input);
   border-radius: var(--radius-full);
   overflow: hidden;
+  border: 1px solid var(--color-border);
 }
 
 .videoFill {
@@ -129,10 +144,10 @@
 
 .watchButton {
   flex-shrink: 0;
-  padding: 8px 14px;
+  padding: 10px 16px;
   background: transparent;
   border: 1px solid var(--color-deep-gold);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   color: var(--color-deep-gold);
   font-family: var(--font-heading);
   font-size: var(--text-xs);
@@ -145,49 +160,59 @@
 
 .watchButton:hover {
   background: rgba(201, 168, 76, 0.1);
+  box-shadow: var(--shadow-gold-glow);
 }
 
 .giveaway {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--space-md);
+  padding: var(--space-md) 0;
+  text-align: center;
 }
 
 .giveawayIcon { flex-shrink: 0; }
 
-.giveawayContent { flex: 1; }
+.giveawayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
 
 .giveawayTitle {
-  font-size: var(--text-base);
+  font-size: var(--text-lg);
   color: var(--color-text-primary);
   text-transform: none;
   letter-spacing: 0;
 }
 
 .giveawayDesc {
-  font-size: var(--text-sm);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
   color: var(--color-deep-gold);
-  font-weight: 600;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(201, 168, 76, 0.3);
 }
 
 .enterButton {
-  flex-shrink: 0;
-  padding: 10px 18px;
+  padding: 12px 32px;
   background: var(--gradient-gold);
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   color: var(--color-jet-black);
   font-family: var(--font-heading);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   cursor: pointer;
   transition: all var(--transition-fast);
-  box-shadow: var(--shadow-button);
+  box-shadow: var(--shadow-button), var(--shadow-gold-glow);
 }
 
 .enterButton:hover {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-button), var(--shadow-gold-glow);
+  box-shadow: var(--shadow-card-elevated), 0 0 24px rgba(201,168,76,0.35);
 }

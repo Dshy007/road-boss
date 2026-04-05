@@ -5,25 +5,24 @@
   gap: var(--space-lg);
   max-width: 480px;
   margin: 0 auto;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
 }
 
 .header {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-md);
 }
 
-.headerTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: var(--space-md);
-}
-
 .greeting {
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: 700;
   line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .gold { color: var(--color-deep-gold); }
@@ -34,13 +33,13 @@
   color: var(--color-chrome-silver);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-top: var(--space-xs);
 }
 
 .statsRow {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
+  width: 100%;
 }
 
 .statCard {
@@ -48,9 +47,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-sm) !important;
+  padding: var(--space-md) var(--space-sm) !important;
   gap: 2px;
-  min-height: 72px;
+  min-height: 80px;
 }
 
 .statLabel {
@@ -64,7 +63,7 @@
 
 .statValue {
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: 800;
   color: var(--color-text-primary);
 }
@@ -78,7 +77,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .sectionTitle {
@@ -87,6 +86,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .unreadBadge {

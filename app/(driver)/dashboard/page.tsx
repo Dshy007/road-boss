@@ -6,7 +6,6 @@ import ShieldDisplay from "@/components/ui/ShieldDisplay";
 import ProgressBar from "@/components/ui/ProgressBar";
 import styles from "./dashboard.module.css";
 
-// Mock data - will be replaced with Supabase
 const driver = {
   firstName: "J.",
   lastName: "Smith",
@@ -47,41 +46,50 @@ const announcements = [
 export default function DashboardPage() {
   return (
     <div className={styles.container}>
-      {/* Header */}
+      {/* Header - centered like profile */}
       <div className={styles.header}>
-        <div className={styles.headerTop}>
-          <div>
-            <h2 className={styles.greeting}>
-              Welcome back, <span className={styles.gold}>{driver.firstName} {driver.lastName}</span>
-            </h2>
-            <p className={styles.subtitle}>Safety Pays</p>
-          </div>
-          <GradeBadge grade={driver.grade} size="lg" />
-        </div>
+        <GradeBadge grade={driver.grade} size="lg" />
+        <h2 className={styles.greeting}>
+          Welcome back, <span className={styles.gold}>{driver.firstName} {driver.lastName}</span>
+        </h2>
+        <p className={styles.subtitle}>Safety Pays</p>
+      </div>
 
-        {/* Stats Row */}
+      {/* Stats Grid - 2x2 like profile records */}
+      <div className={styles.section}>
         <div className={styles.statsRow}>
-          <MetalCard variant="gold" className={styles.statCard}>
-            <span className={styles.statLabel}>Points</span>
-            <span className={styles.statValue}>{driver.points.toLocaleString()}</span>
+          <MetalCard variant="gold">
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>{driver.points.toLocaleString()}</span>
+              <span className={styles.statLabel}>Points</span>
+            </div>
           </MetalCard>
 
-          <MetalCard className={styles.statCard}>
-            <span className={styles.statLabel}>Streak</span>
-            <span className={styles.statValue}>{driver.streak} <span className={styles.statUnit}>wks</span></span>
+          <MetalCard variant="gold">
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>{driver.streak} <span className={styles.statUnit}>wks</span></span>
+              <span className={styles.statLabel}>Streak</span>
+            </div>
           </MetalCard>
 
-          <MetalCard className={styles.statCard}>
-            <ShieldDisplay count={driver.shields} />
+          <MetalCard>
+            <div className={styles.statCard}>
+              <ShieldDisplay count={driver.shields} />
+            </div>
           </MetalCard>
 
-          <MetalCard className={styles.statCard}>
-            <span className={styles.statLabel}>Rank</span>
-            <span className={styles.statValue}>#{driver.rank}</span>
+          <MetalCard>
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>#{driver.rank}</span>
+              <span className={styles.statLabel}>Rank</span>
+            </div>
           </MetalCard>
         </div>
+      </div>
 
-        {/* Grade Progress */}
+      {/* Grade Progress */}
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>Grade Progress</h3>
         <MetalCard>
           <ProgressBar
             current={driver.points}
@@ -92,7 +100,7 @@ export default function DashboardPage() {
         </MetalCard>
       </div>
 
-      {/* Driver HQ - Announcements */}
+      {/* Driver HQ */}
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>
           Driver HQ

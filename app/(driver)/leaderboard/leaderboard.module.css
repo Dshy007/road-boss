@@ -5,39 +5,45 @@
   gap: var(--space-lg);
   max-width: 480px;
   margin: 0 auto;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: var(--space-md);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .title {
   font-size: var(--text-2xl);
   color: var(--color-text-primary);
+  text-align: center;
 }
 
 .resetTimer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 14px;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  border-radius: var(--radius-full);
 }
 
 .resetLabel {
   font-family: var(--font-heading);
-  font-size: 10px;
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  font-weight: 600;
 }
 
 .resetDays {
   font-family: var(--font-heading);
   font-size: var(--text-sm);
-  color: var(--color-warning);
+  color: var(--color-deep-gold);
   font-weight: 700;
 }
 
@@ -54,8 +60,8 @@
 }
 
 .rankBadge {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,18 +80,21 @@
   color: var(--color-jet-black) !important;
   border-color: #D4B65A !important;
   box-shadow: var(--shadow-gold-glow);
+  font-size: var(--text-base) !important;
 }
 
 .rank2 {
   background: var(--gradient-chrome) !important;
   color: var(--color-jet-black) !important;
   border-color: #B0B0B0 !important;
+  font-size: var(--text-base) !important;
 }
 
 .rank3 {
   background: linear-gradient(145deg, #CD7F32, #A0622A, #CD7F32) !important;
   color: var(--color-jet-black) !important;
   border-color: #CD7F32 !important;
+  font-size: var(--text-base) !important;
 }
 
 .driverInfo {

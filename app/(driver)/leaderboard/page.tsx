@@ -26,7 +26,7 @@ export default function LeaderboardPage() {
       <div className={styles.header}>
         <h2 className={styles.title}>Leaderboard</h2>
         <div className={styles.resetTimer}>
-          <span className={styles.resetLabel}>Monthly Reset</span>
+          <span className={styles.resetLabel}>Monthly Reset in</span>
           <span className={styles.resetDays}>{daysLeft} days</span>
         </div>
       </div>
