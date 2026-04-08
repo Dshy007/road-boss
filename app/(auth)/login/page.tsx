@@ -93,14 +93,29 @@ export default function LoginPage() {
       <div className={styles.fireBackground} />
 
       <div className={styles.content}>
-        <div className={styles.logoSection}>
+        {/* Contained hero card */}
+        <div className={styles.heroCard}>
           <h1 className={styles.logoTitle}>
             Road <span className={styles.logoAccent}>Boss</span>
           </h1>
-          <p className={styles.tagline}>Safety Pays</p>
-          <div className={styles.truckImage}>
-            2026 Freightliner Cascadia
+
+          <div className={styles.divider} />
+
+          {/* Ticker marquee */}
+          <div className={styles.tickerWrap}>
+            <div className={styles.ticker}>
+              <span className={styles.tickerItem}>$ Safety Pays $</span>
+              <span className={styles.tickerDot}>&bull;</span>
+              <span className={styles.tickerItem}>$ Safety Pays $</span>
+              <span className={styles.tickerDot}>&bull;</span>
+              <span className={styles.tickerItem}>$ Safety Pays $</span>
+              <span className={styles.tickerDot}>&bull;</span>
+              <span className={styles.tickerItem}>$ Safety Pays $</span>
+              <span className={styles.tickerDot}>&bull;</span>
+            </div>
           </div>
+
+          <p className={styles.challengeText}>Do you have what it takes?</p>
         </div>
 
         {step === "phone" && (
@@ -121,7 +136,7 @@ export default function LoginPage() {
               type="submit"
               disabled={phone.replace(/\D/g, "").length !== 10 || loading}
             >
-              {loading ? "Sending Code..." : "Send Code"}
+              {loading ? "Sending..." : "Send Code"}
             </button>
           </form>
         )}

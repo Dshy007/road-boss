@@ -23,11 +23,11 @@ const daysLeft = 12;
 export default function LeaderboardPage() {
   return (
     <div className={styles.container}>
-      <div className={`${styles.header} stagger-1`}>
+      <div className={`${styles.header}`}>
         <h2 className={styles.title}>Leaderboard</h2>
         <div className={styles.resetTimer}>
           <span className={styles.resetLabel}>Monthly Reset in</span>
-          <span className={`${styles.resetDays} glow-gold`}>{daysLeft} days</span>
+          <span className={`${styles.resetDays}`}>{daysLeft} days</span>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default function LeaderboardPage() {
             <div key={driver.rank} className={`stagger-${Math.min(i + 2, 8)}`}>
               <MetalCard
                 variant={isTop3 ? "elevated" : "default"}
-                className={`${isCurrentUser ? styles.currentUser : ""} shimmer-card`}
+                className={`${isCurrentUser ? styles.currentUser : ""}`}
               >
                 <div className={styles.row}>
                   <div className={`${styles.rankBadge} ${isTop3 ? styles[`rank${driver.rank}`] : ""}`}>
@@ -54,7 +54,7 @@ export default function LeaderboardPage() {
                       {driver.points.toLocaleString()} pts
                     </span>
                   </div>
-                  <div className="scale-in">
+                  <div className="">
                     <GradeBadge grade={driver.grade} size="sm" />
                   </div>
                 </div>

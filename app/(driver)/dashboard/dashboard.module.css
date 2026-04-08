@@ -2,111 +2,176 @@
   padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   max-width: 480px;
   margin: 0 auto;
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-2xl);
+  padding-top: var(--space-lg);
+  padding-bottom: calc(var(--tab-bar-height) + var(--space-xl));
 }
 
+/* 1. Compact Header */
 .header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: var(--space-md);
 }
 
-.greeting {
-  font-size: var(--text-2xl);
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerName {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
   font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: none;
+  letter-spacing: 0;
   line-height: 1.2;
-  text-align: center;
+}
+
+.headerGrade {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-deep-gold);
+  margin-top: 2px;
+}
+
+.headerRight {
+  flex-shrink: 0;
+}
+
+.bellIcon {
+  position: relative;
+  padding: 8px;
+}
+
+.bellDot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-deep-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 6px rgba(201,168,76,0.4);
+}
+
+/* 3. Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* 4. Grade Progress */
+.gradeProgressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.gradeProgressLabel {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.gradeProgressPoints {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-deep-gold);
+  font-weight: 600;
+}
+
+.gradeMarkers {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* 5. Quick Actions */
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-chrome-silver);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.actionList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.actionLabel {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
   text-transform: none;
   letter-spacing: 0;
 }
 
-.gold { color: var(--color-deep-gold); }
-
-.subtitle {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  color: var(--color-chrome-silver);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.statsRow {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
-  width: 100%;
-}
-
-.statCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-md) var(--space-sm) !important;
-  gap: 2px;
-  min-height: 80px;
-}
-
-.statLabel {
+.requiredBadge {
   font-family: var(--font-heading);
   font-size: 10px;
-  color: var(--color-text-muted);
+  font-weight: 700;
+  color: var(--color-deep-gold);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--radius-sm);
+  background: rgba(201,168,76,0.06);
 }
 
-.statValue {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: 800;
-  color: var(--color-text-primary);
-}
-
-.statUnit {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  font-weight: 600;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.sectionTitle {
-  font-size: var(--text-lg);
-  color: var(--color-chrome-silver);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-xs);
-}
-
+/* 6. Driver HQ */
 .unreadBadge {
   font-family: var(--font-body);
   font-size: var(--text-xs);
   background: var(--color-dark-maroon);
   color: white;
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  padding: 0 6px;
 }
 
 .announcements {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 8px;
 }
 
 .announcement {
@@ -149,4 +214,23 @@
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   margin-top: var(--space-xs);
+}
+
+.viewAll {
+  background: none;
+  border: none;
+  color: var(--color-deep-gold);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: center;
+  transition: opacity var(--transition-fast);
+}
+
+.viewAll:hover {
+  opacity: 0.8;
 }

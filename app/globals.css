@@ -7,7 +7,7 @@
    "Safety Pays" | Premium. Rugged. Mature.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   --color-dark-blue: #1A2B4A;
@@ -44,6 +44,7 @@
   --color-border-light: #333333;
 
   --font-heading: 'Barlow Condensed', sans-serif;
+  --font-display: 'Instrument Serif', serif;
   --font-body: 'Inter', sans-serif;
 
   --text-xs: 0.75rem;
@@ -76,6 +77,16 @@
   --gradient-metallic: linear-gradient(145deg, #2A2A2A 0%, #1A1A1A 50%, #222222 100%);
   --gradient-gold: linear-gradient(145deg, #D4B65A, #C9A84C, #B8943F);
   --gradient-chrome: linear-gradient(145deg, #D0D0D0, #A0A0A0, #C0C0C0);
+
+  /* Silver chrome gradient collection — from reference swatches */
+  --chrome-light: linear-gradient(145deg, #E8E8E8 0%, #B8B8B8 30%, #D4D4D4 50%, #A0A0A0 70%, #C8C8C8 100%);
+  --chrome-medium: linear-gradient(145deg, #C8C8C8 0%, #8A8A8A 25%, #B0B0B0 50%, #7A7A7A 75%, #A8A8A8 100%);
+  --chrome-dark: linear-gradient(145deg, #9A9A9A 0%, #5A5A5A 30%, #808080 50%, #4A4A4A 75%, #707070 100%);
+  --chrome-rim: linear-gradient(180deg, #B8B8B8 0%, #6A6A6A 40%, #909090 60%, #4A4A4A 100%);
+  --chrome-card-border: linear-gradient(180deg, rgba(192,192,192,0.4) 0%, rgba(80,80,80,0.15) 50%, rgba(192,192,192,0.3) 100%);
+  --chrome-inset: inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.2);
+  --chrome-highlight: 0 1px 0 rgba(255,255,255,0.08);
+  --shadow-chrome: 0 2px 8px rgba(0,0,0,0.4), 0 1px 0 rgba(192,192,192,0.1);
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
@@ -214,4 +225,57 @@ a { color: inherit; text-decoration: none; }
   0% { left: -100%; }
   50% { left: 150%; }
   100% { left: 150%; }
+}
+
+/* Chrome shimmer — sweeps a silver highlight across surfaces */
+@keyframes chromeShimmer {
+  0% { background-position: -300% center; }
+  100% { background-position: 300% center; }
+}
+
+.chrome-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.chrome-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--chrome-card-border);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Chrome accent line — thin metallic divider */
+.chrome-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(192,192,192,0.3) 20%, rgba(192,192,192,0.5) 50%, rgba(192,192,192,0.3) 80%, transparent 100%);
+}
+
+/* Chrome surface shimmer for cards on hover */
+.chrome-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.chrome-surface::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(192,192,192,0.04) 30%,
+    rgba(192,192,192,0.08) 50%,
+    rgba(192,192,192,0.04) 70%,
+    transparent 100%
+  );
+  animation: chromeShimmer 6s ease-in-out infinite;
+  pointer-events: none;
 }

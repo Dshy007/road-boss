@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { AnimatePresence } from "framer-motion";
+import LoadingScreen from "@/components/LoadingScreen";
 import styles from "./driver-layout.module.css";
 
 const tabs = [
@@ -59,28 +62,42 @@ function TabIcon({ name, active }: { name: string; active: boolean }) {
 
 export default function DriverLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.fireBackground} />
-      <main className={styles.main}>{children}</main>
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
 
-      <nav className={styles.tabBar}>
-        {tabs.map((tab) => {
-          const active = pathname === tab.href;
-          return (
-            <Link
-              key={tab.href}
-              href={tab.href}
-              className={`${styles.tab} ${active ? styles.tabActive : ""}`}
-            >
-              <TabIcon name={tab.icon} active={active} />
-              <span className={styles.tabLabel}>{tab.label}</span>
-              {active && <span className={styles.tabIndicator} />}
-            </Link>
-          );
-        })}
-      </nav>
+      <div
+        style={{
+          opacity: isLoading ? 0 : 1,
+          transition: "opacity 0.5s ease-out",
+        }}
+      >
+        <div className={styles.fireBackground} />
+        <main className={styles.main}>{children}</main>
+
+        <nav className={styles.tabBar}>
+          {tabs.map((tab) => {
+            const active = pathname === tab.href;
+            return (
+              <Link
+                key={tab.href}
+                href={tab.href}
+                className={`${styles.tab} ${active ? styles.tabActive : ""}`}
+              >
+                <TabIcon name={tab.icon} active={active} />
+                <span className={styles.tabLabel}>{tab.label}</span>
+                {active && <span className={styles.tabIndicator} />}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </div>
   );
 }

@@ -1,182 +1,313 @@
 .container {
-  padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 16px;
   max-width: 480px;
   margin: 0 auto;
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-2xl);
+  padding: 24px 16px calc(var(--tab-bar-height) + 32px);
+  background: #F8F9FA;
+  min-height: 100dvh;
 }
 
+/* Header */
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: 8px;
+  padding-bottom: 16px;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: var(--radius-full);
-  background: var(--gradient-metallic);
-  border: 2px solid var(--color-border-light);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1E3A8A;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-card);
 }
 
 .avatarText {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: 800;
-  color: var(--color-chrome-silver);
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
 .name {
-  font-size: var(--text-2xl);
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
   text-transform: none;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 .gradeRow {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 10px;
+}
+
+.gradeBadge {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1E3A8A;
+  background: #DBEAFE;
+  padding: 4px 12px;
+  border-radius: 6px;
 }
 
 .pointsLabel {
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  color: var(--color-deep-gold);
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B7280;
 }
 
-.section {
+/* Card — white surface */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  align-items: center;
+  gap: 8px;
 }
 
-.sectionTitle {
-  font-size: var(--text-lg);
-  color: var(--color-chrome-silver);
-  margin-bottom: var(--space-xs);
+.cardLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  align-self: flex-start;
 }
 
-.recordsGrid {
+/* Fleet Standing */
+.rankValue {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  line-height: 1;
+  align-self: flex-start;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.rankBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: #DBEAFE;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1E3A8A;
+}
+
+.rankDesc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #6B7280;
+  line-height: 1.5;
+  align-self: flex-start;
+}
+
+/* Safety Score Ring */
+.ringContainer {
+  position: relative;
+  width: 148px;
+  height: 148px;
+}
+
+.ringInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringScore {
+  font-family: var(--font-body);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1E3A8A;
+  line-height: 1;
+}
+
+.ringLabel {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
+.tierLabel {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E3A8A;
+}
+
+/* Stats Grid */
+.statsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
-.record {
+.statCard {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 16px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: var(--space-sm) 0;
 }
 
-.recordValue {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: 800;
-  color: var(--color-text-primary);
+.statValue {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
 }
 
-.recordLabel {
-  font-family: var(--font-heading);
+.statLabel {
+  font-family: var(--font-body);
   font-size: 10px;
-  color: var(--color-text-muted);
+  font-weight: 500;
+  color: #9CA3AF;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
   text-align: center;
 }
 
+/* Contact */
 .contactList {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 .contactRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-sm) 0;
+  padding: 10px 0;
 }
 
 .contactLabel {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #9CA3AF;
+  font-weight: 500;
 }
 
 .contactValue {
-  font-size: var(--text-sm);
-  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
 }
 
 .contactDivider {
   height: 1px;
-  background: var(--color-border);
+  background: #E5E7EB;
 }
 
-.historyRow {
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* History Cards */
+.historyCard {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 12px;
 }
 
 .historyMonth {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
   flex: 1;
-  text-transform: none;
-  letter-spacing: 0;
 }
 
 .historyPoints {
-  font-size: var(--text-sm);
-  color: var(--color-text-primary);
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.historyGrade {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1E3A8A;
+  background: #DBEAFE;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .historyRank {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  font-weight: 700;
-  min-width: 30px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #9CA3AF;
+  font-weight: 600;
+  min-width: 28px;
   text-align: right;
 }
 
+/* Logout */
 .logoutButton {
   width: 100%;
   padding: 14px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  color: var(--color-text-muted);
-  font-family: var(--font-heading);
-  font-size: var(--text-base);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  color: #9CA3AF;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  margin-top: var(--space-md);
+  transition: all 0.15s ease;
+  margin-top: 8px;
 }
 
 .logoutButton:hover {
-  border-color: var(--color-dark-maroon);
-  color: var(--color-dark-maroon);
+  border-color: #EF4444;
+  color: #EF4444;
 }

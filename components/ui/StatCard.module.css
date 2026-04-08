@@ -1,0 +1,33 @@
+.card {
+  background: var(--gradient-metallic);
+  border: 1px solid rgba(192, 192, 192, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.icon {
+  margin-bottom: 4px;
+  opacity: 0.7;
+}
+
+.value {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-chrome-silver);
+  line-height: 1.1;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  color: rgba(192, 192, 192, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-top: 2px;
+}

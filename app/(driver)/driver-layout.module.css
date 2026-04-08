@@ -13,10 +13,13 @@
   pointer-events: none;
   z-index: 0;
   background:
+    radial-gradient(ellipse at 50% 0%, rgba(192,192,192,0.04) 0%, transparent 35%),
     radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 20% 100%, rgba(107,31,42,0.08) 0%, transparent 40%),
     radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.05) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 50%, rgba(26,43,74,0.15) 0%, transparent 70%);
+    radial-gradient(ellipse at 50% 50%, rgba(26,43,74,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse at 10% 50%, rgba(192,192,192,0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 50%, rgba(192,192,192,0.02) 0%, transparent 40%);
   animation: ambientGlow 6s ease-in-out infinite alternate;
 }
 
@@ -68,8 +71,8 @@
   left: 0;
   right: 0;
   height: var(--tab-bar-height);
-  background: linear-gradient(180deg, rgba(17,17,17,0.95) 0%, rgba(10,10,10,0.98) 100%);
-  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(20,20,20,0.97) 0%, rgba(10,10,10,0.99) 100%);
+  border-top: 1px solid rgba(192, 192, 192, 0.15);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -77,6 +80,19 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
   z-index: 100;
   backdrop-filter: blur(16px);
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(192,192,192,0.08);
+}
+
+/* Chrome highlight line across top of tab bar */
+.tabBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192,192,192,0.3), rgba(192,192,192,0.5), rgba(192,192,192,0.3), transparent);
+  pointer-events: none;
 }
 
 .tab {
@@ -103,12 +119,13 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-text-muted);
+  color: rgba(192, 192, 192, 0.5);
   transition: color var(--transition-base);
 }
 
 .tabActive .tabLabel {
   color: var(--color-deep-gold);
+  text-shadow: 0 0 8px rgba(201,168,76,0.3);
 }
 
 .tabIndicator {

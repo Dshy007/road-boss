@@ -1,7 +1,5 @@
 "use client";
 
-import MetalCard from "@/components/ui/MetalCard";
-import GradeBadge from "@/components/ui/GradeBadge";
 import styles from "./profile.module.css";
 
 const driver = {
@@ -11,8 +9,12 @@ const driver = {
   email: "b.johnson@email.com",
   grade: "A",
   points: 847,
-  streak: 3,
-  bestStreak: 7,
+  safetyScore: 85,
+  rank: 12,
+  totalDrivers: 38,
+  regionPercentile: 3,
+  streak: 14,
+  bestStreak: 28,
   bestScore: 1150,
   monthsActive: 4,
 };
@@ -24,97 +26,123 @@ const monthlyHistory = [
   { month: "Jan 2026", points: 620, grade: "C", rank: 14 },
 ];
 
+function SafetyRing({ score }: { score: number }) {
+  const radius = 58;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (score / 100) * circumference;
+
+  return (
+    <div className={styles.ringContainer}>
+      <svg width="148" height="148" viewBox="0 0 148 148">
+        <circle cx="74" cy="74" r={radius} fill="none" stroke="#E5E7EB" strokeWidth="8" />
+        <circle
+          cx="74" cy="74" r={radius} fill="none"
+          stroke="#1E3A8A" strokeWidth="8"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          transform="rotate(-90 74 74)"
+        />
+      </svg>
+      <div className={styles.ringInner}>
+        <span className={styles.ringScore}>{score}</span>
+        <span className={styles.ringLabel}>Safety Score</span>
+      </div>
+    </div>
+  );
+}
+
 export default function ProfilePage() {
   return (
     <div className={styles.container}>
       {/* Profile Header */}
-      <div className={`${styles.header} stagger-1`}>
-        <div className={`${styles.avatar} scale-in`}>
+      <div className={styles.header}>
+        <div className={styles.avatar}>
           <span className={styles.avatarText}>
             {driver.firstName[0]}{driver.lastName[0]}
           </span>
         </div>
         <h2 className={styles.name}>{driver.firstName} {driver.lastName}</h2>
         <div className={styles.gradeRow}>
-          <div className="scale-in">
-            <GradeBadge grade={driver.grade} size="lg" />
-          </div>
-          <span className={`${styles.pointsLabel} glow-gold`}>{driver.points.toLocaleString()} pts</span>
+          <span className={styles.gradeBadge}>{driver.grade}</span>
+          <span className={styles.pointsLabel}>{driver.points.toLocaleString()} pts</span>
         </div>
       </div>
 
-      {/* Personal Records */}
-      <div className={`${styles.section} stagger-2`}>
-        <h3 className={styles.sectionTitle}>Personal Records</h3>
-        <div className={styles.recordsGrid}>
-          <MetalCard variant="gold" className="shimmer-card">
-            <div className={styles.record}>
-              <span className={styles.recordValue}>{driver.bestStreak}</span>
-              <span className={styles.recordLabel}>Best Streak (wks)</span>
-            </div>
-          </MetalCard>
-          <MetalCard variant="gold" className="shimmer-card">
-            <div className={styles.record}>
-              <span className={styles.recordValue}>{driver.bestScore.toLocaleString()}</span>
-              <span className={styles.recordLabel}>Best Score</span>
-            </div>
-          </MetalCard>
-          <MetalCard className="shimmer-card">
-            <div className={styles.record}>
-              <span className={styles.recordValue}>{driver.streak}</span>
-              <span className={styles.recordLabel}>Current Streak</span>
-            </div>
-          </MetalCard>
-          <MetalCard className="shimmer-card">
-            <div className={styles.record}>
-              <span className={styles.recordValue}>{driver.monthsActive}</span>
-              <span className={styles.recordLabel}>Months Active</span>
-            </div>
-          </MetalCard>
+      {/* Fleet Standing */}
+      <div className={styles.card}>
+        <span className={styles.cardLabel}>Fleet Standing</span>
+        <h3 className={styles.rankValue}>Rank #{driver.rank}</h3>
+        <div className={styles.rankBadge}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+            <polyline points="17 6 23 6 23 12" />
+          </svg>
+          <span>Top {driver.regionPercentile}% regionally</span>
+        </div>
+        <p className={styles.rankDesc}>
+          Exemplary performance maintained over the last 30 days. Your safety compliance score
+          is 8.4% higher than the fleet average.
+        </p>
+      </div>
+
+      {/* Safety Score Ring */}
+      <div className={styles.card}>
+        <SafetyRing score={driver.safetyScore} />
+        <span className={styles.tierLabel}>Elite Tier</span>
+      </div>
+
+      {/* Stats Grid */}
+      <div className={styles.statsGrid}>
+        <div className={styles.statCard}>
+          <span className={styles.statValue}>{driver.streak}</span>
+          <span className={styles.statLabel}>Day Streak</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statValue}>{driver.bestStreak}</span>
+          <span className={styles.statLabel}>Best Streak (Days)</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statValue}>{driver.bestScore.toLocaleString()}</span>
+          <span className={styles.statLabel}>Best Score</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statValue}>{driver.monthsActive}</span>
+          <span className={styles.statLabel}>Months Active</span>
         </div>
       </div>
 
       {/* Contact Info */}
-      <div className={`${styles.section} stagger-4`}>
-        <h3 className={styles.sectionTitle}>Contact Info</h3>
-        <MetalCard className="shimmer-card">
-          <div className={styles.contactList}>
-            <div className={styles.contactRow}>
-              <span className={styles.contactLabel}>Phone</span>
-              <span className={styles.contactValue}>{driver.phone}</span>
-            </div>
-            <div className={styles.contactDivider} />
-            <div className={styles.contactRow}>
-              <span className={styles.contactLabel}>Email</span>
-              <span className={styles.contactValue}>{driver.email}</span>
-            </div>
+      <div className={styles.card}>
+        <span className={styles.cardLabel}>Contact Info</span>
+        <div className={styles.contactList}>
+          <div className={styles.contactRow}>
+            <span className={styles.contactLabel}>Phone</span>
+            <span className={styles.contactValue}>{driver.phone}</span>
           </div>
-        </MetalCard>
+          <div className={styles.contactDivider} />
+          <div className={styles.contactRow}>
+            <span className={styles.contactLabel}>Email</span>
+            <span className={styles.contactValue}>{driver.email}</span>
+          </div>
+        </div>
       </div>
 
       {/* Monthly History */}
-      <div className={`${styles.section} stagger-5`}>
-        <h3 className={styles.sectionTitle}>Monthly History</h3>
-        {monthlyHistory.map((m, i) => (
-          <div key={m.month} className={`stagger-${Math.min(i + 6, 8)}`}>
-            <MetalCard className="shimmer-card">
-              <div className={styles.historyRow}>
-                <span className={styles.historyMonth}>{m.month}</span>
-                <span className={styles.historyPoints}>{m.points.toLocaleString()} pts</span>
-                <div className="scale-in">
-                  <GradeBadge grade={m.grade} size="sm" />
-                </div>
-                <span className={styles.historyRank}>#{m.rank}</span>
-              </div>
-            </MetalCard>
+      <div className={styles.section}>
+        <span className={styles.sectionTitle}>Monthly History</span>
+        {monthlyHistory.map((m) => (
+          <div key={m.month} className={styles.historyCard}>
+            <span className={styles.historyMonth}>{m.month}</span>
+            <span className={styles.historyPoints}>{m.points.toLocaleString()} pts</span>
+            <span className={styles.historyGrade}>{m.grade}</span>
+            <span className={styles.historyRank}>#{m.rank}</span>
           </div>
         ))}
       </div>
 
       {/* Logout */}
-      <div className="stagger-8">
-        <button className={styles.logoutButton}>Log Out</button>
-      </div>
+      <button className={styles.logoutButton}>Log Out</button>
     </div>
   );
 }

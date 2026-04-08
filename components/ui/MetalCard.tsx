@@ -2,7 +2,7 @@ import styles from "./MetalCard.module.css";
 
 interface MetalCardProps {
   children: React.ReactNode;
-  variant?: "default" | "elevated" | "gold";
+  variant?: "default" | "elevated" | "gold" | "action" | "featured";
   className?: string;
   onClick?: () => void;
 }
